@@ -20,9 +20,20 @@ Note: data is lost when the program exits (saving to a file comes later).
 Run with:
     python3 main.py
 """
+import json
 
-expenses = []
+def load_expenses():
+    try:
+        with open("expenses.json", "r") as file:
+            loaded = json.load(file)
+            return loaded
+    except FileNotFoundError:
+        return []
 
+def save_expenses(expenses):
+    with open ("expenses.json", "w") as file:
+        json.dump(expenses, file)
+    
 
 def add_expense(expenses):
     """
@@ -62,6 +73,7 @@ def add_expense(expenses):
     expenses.append(expense)
 
     print("Expense added.")
+    save_expenses(expenses)
 
 
 def print_expense(number, expense):
@@ -163,6 +175,7 @@ def search_expenses(expenses):
     if not found:
         print("No matching expenses.")
 
+expenses = load_expenses()
 
 # Main menu: runs until the user chooses 6 (Exit).
 while True:
