@@ -15,7 +15,7 @@ Each expense is stored as a dictionary:
     {"amount": 12.5, "category": "food", "description": "lunch at work"}
 
 All expenses are kept in a list while the program runs.
-Note: data is lost when the program exits (saving to a file comes later).
+Note: Expenses are saved to expenses.json and loaded when the program starts.
 
 Run with:
     python3 main.py
@@ -29,6 +29,8 @@ def load_expenses():
             return loaded
     except FileNotFoundError:
         return []
+    except json.JSONDecodeError:
+        print("Data file is corrupted. Starting fresh.")
 
 def save_expenses(expenses):
     with open ("expenses.json", "w") as file:
