@@ -10,7 +10,9 @@ A command-line expense tracker written in Python. Add your expenses, view them, 
 - **Category summary**: total spent in each category
 - **Search expenses**: find expenses by category or description (case-insensitive)
 - **Input validation**: invalid amounts, zero or negative values and empty categories are rejected without crashing
-
+- **Saved data**: expenses are stored in expenses.json and reloaded on startup”
+- **Limitations**: remove the line about losing data. If nothing is left in that section, delete the whole section.
+- **Planned improvements:**: remove “Save and load expenses with JSON”
 ## Requirements
 
 - Python 3
